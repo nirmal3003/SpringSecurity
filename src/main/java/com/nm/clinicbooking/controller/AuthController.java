@@ -57,7 +57,9 @@ public class AuthController {
         String token = jwtUtil.generateToken(
                 user.getEmail(),
                 user.getRole().name(),   // MUST be DOCTOR / ADMIN / PATIENT
-                user.getId()             // MUST NOT be null
+                user.getId()  ,
+                user.getName()
+                // MUST NOT be null
         );
 
         return ResponseEntity.ok(new LoginResponse(token));

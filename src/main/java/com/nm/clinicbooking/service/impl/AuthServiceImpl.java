@@ -67,6 +67,6 @@ public class AuthServiceImpl implements AuthService {
             throw new RuntimeException("Invalid email or password");
         }
 
-        return jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId());
+        return jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId(), user.getName());
     }
 }

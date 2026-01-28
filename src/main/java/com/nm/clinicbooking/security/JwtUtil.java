@@ -19,7 +19,7 @@ public class JwtUtil {
         this.secretKey = Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String generateToken(String email, String role, Long userId) {
+    public String generateToken(String email, String role, Long userId, String name) {
         System.out.println(">>> Generating token with:");
         System.out.println("email = " + email);
         System.out.println("role  = " + role);
@@ -29,6 +29,7 @@ public class JwtUtil {
                 .setSubject(email)
                 .claim("role", role)
                 .claim("userId", userId)
+                .claim("name", name)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours
                 .signWith(secretKey)
