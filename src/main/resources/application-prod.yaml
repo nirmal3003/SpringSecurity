@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ClinicBookingApp
+  profiles:
+    active: prod
+
+  datasource:
+    url: ${MYSQL_URL}
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+# JWT Configuration
+jwt:
+  secret: my-super-secret-key-for-jwt-signing-which-is-very-long-123456
+  expiration: 36000000
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
